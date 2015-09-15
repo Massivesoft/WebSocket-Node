@@ -19,4 +19,5 @@ chmod +x websocket-server
 chmod +x /etc/service/wss/run
 chmod +x /etc/service/wss/log/run
 mkdir /etc/service/wss/log/main
-sv u -v /etc/service/wss/
+sv -v u /etc/service/wss/
+sv -v s /etc/service/wss/
