@@ -2,7 +2,7 @@
 
 # debian based os's only
 
-apt-get install runit nodejs build-essential -y
+apt-get -y install runit nodejs #build-essential
 npm install -g node-gyp
 # create symlinks
 cd /var/www/
@@ -15,3 +15,8 @@ npm install WebSocket-NodeJS-runit
 mv WebSocket-NodeJS-runit/server/websocket-server ./
 mv WebSocket-NodeJS-runit/server/wss /etc/sv/
 ln -s /etc/sv/wss /etc/service/wss
+chmod +x websocket-server
+chmod +x /etc/service/wss/run
+chmod +x /etc/service/wss/log/run
+mkdir /etc/service/wss/log/main
+sv u -v /etc/service/wss/
