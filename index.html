@@ -1,8 +1,371 @@
+<!doctype html>
 <html>
   <head>
-    <title>WebSocket-Node</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Websocket-nodejs by Massivesoft</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <h1><a href="https://github.com/Worlize/WebSocket-Node">WebSocket-Node Github Page.</a></h1>
+    <div class="wrapper">
+      <header>
+        <h1>Websocket-nodejs</h1>
+        <p>A WebSocket Implementation for Node.JS (Draft -08 through the final RFC 6455)</p>
+
+        <p class="view"><a href="https://github.com/Massivesoft/WebSocket-NodeJS">View the Project on GitHub <small>Massivesoft/WebSocket-NodeJS</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Massivesoft/WebSocket-NodeJS/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Massivesoft/WebSocket-NodeJS/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Massivesoft/WebSocket-NodeJS">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="websocket-client--server-implementation-for-node" class="anchor" href="#websocket-client--server-implementation-for-node" aria-hidden="true"><span class="octicon octicon-link"></span></a>WebSocket Client &amp; Server Implementation for Node</h1>
+
+<p><a href="https://gitter.im/theturtle32/WebSocket-Node?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/theturtle32/WebSocket-Node"></a></p>
+
+<p><a href="http://badge.fury.io/js/websocket"><img src="https://badge.fury.io/js/websocket.svg" alt="npm version"></a></p>
+
+<p><a href="https://nodei.co/npm/websocket/"><img src="https://nodei.co/npm/websocket.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM"></a></p>
+
+<p><a href="https://nodei.co/npm/websocket/"><img src="https://nodei.co/npm-dl/websocket.png?height=3" alt="NPM"></a></p>
+
+<p><a href="https://codeship.com/projects/61106"> <img src="https://codeship.com/projects/70458270-8ee7-0132-7756-0a0cf4fe8e66/status?branch=master" alt="Codeship Status for theturtle32/WebSocket-Node"></a></p>
+
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>This is a (mostly) pure JavaScript implementation of the WebSocket protocol versions 8 and 13 for Node.  There are some example client and server applications that implement various interoperability testing protocols in the "test/scripts" folder.</p>
+
+<p>For a WebSocket client written in ActionScript 3, see my <a href="https://github.com/theturtle32/AS3WebSocket">AS3WebScocket</a> project.</p>
+
+<h1>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h1>
+
+<p><a href="docs/index.md">You can read the full API documentation in the docs folder.</a></p>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<p><strong><em>Current Version: 1.0.18</em></strong> — Released 2015-03-19</p>
+
+<p><strong><em>Version 1.0.18</em></strong></p>
+
+<ul>
+<li>Resolves <a href="https://github.com/theturtle32/WebSocket-Node/pull/179">issue #195</a> - passing number to connection.send() causes crash</li>
+<li><a href="https://github.com/theturtle32/WebSocket-Node/issues/184">Added close code/reason arguments to W3CWebSocket#close()</a></li>
+</ul>
+
+<p><strong><em>Version 1.0.17</em></strong></p>
+
+<ul>
+<li>Resolves <a href="https://github.com/theturtle32/WebSocket-Node/pull/179">issue #179</a> - Allow toBuffer to work with empty data</li>
+</ul>
+
+<p><strong><em>Version 1.0.16</em></strong></p>
+
+<ul>
+<li>Resolves <a href="https://github.com/theturtle32/WebSocket-Node/issues/178">issue #178</a> - Ping Frames with no data</li>
+</ul>
+
+<p><strong><em>Version 1.0.15</em></strong></p>
+
+<ul>
+<li>Resolves <a href="https://github.com/theturtle32/WebSocket-Node/issues/177">issue #177</a> - WebSocketClient ignores options unless it has a tlsOptions property</li>
+</ul>
+
+<p><strong><em>Version 1.0.14</em></strong></p>
+
+<ul>
+<li>Resolves <a href="https://github.com/theturtle32/WebSocket-Node/issues/173">issue #173</a> - To allow the W3CWebSocket interface to accept an optional non-standard configuration object as its third parameter, which will be ignored when running in a browser context.</li>
+</ul>
+
+<p><a href="CHANGELOG.md">View the full changelog</a></p>
+
+<h2>
+<a id="browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser Support</h2>
+
+<p>All current browsers are fully supported.</p>
+
+<ul>
+<li>Firefox 7-9 (Old) (Protocol Version 8)</li>
+<li>Firefox 10+ (Protocol Version 13)</li>
+<li>Chrome 14,15 (Old) (Protocol Version 8)</li>
+<li>Chrome 16+ (Protocol Version 13)</li>
+<li>Internet Explorer 10+ (Protocol Version 13)</li>
+<li>Safari 6+ (Protocol Version 13)</li>
+</ul>
+
+<p><strong><em>Safari older than 6.0 is not supported since it uses a very old draft of WebSockets</em></strong></p>
+
+<p><strong><em>If you need to simultaneously support legacy browser versions that had implemented draft-75/draft-76/draft-00, take a look here: <a href="https://gist.github.com/1428579">https://gist.github.com/1428579</a></em></strong></p>
+
+<h2>
+<a id="benchmarks" class="anchor" href="#benchmarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benchmarks</h2>
+
+<p>There are some basic benchmarking sections in the Autobahn test suite.  I've put up a <a href="http://theturtle32.github.com/WebSocket-Node/benchmarks/">benchmark page</a> that shows the results from the Autobahn tests run against AutobahnServer 0.4.10, WebSocket-Node 1.0.2, WebSocket-Node 1.0.4, and ws 0.3.4.</p>
+
+<h2>
+<a id="autobahn-tests" class="anchor" href="#autobahn-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Autobahn Tests</h2>
+
+<p>The very complete <a href="http://autobahn.ws/testsuite/">Autobahn Test Suite</a> is used by most WebSocket implementations to test spec compliance and interoperability.</p>
+
+<ul>
+<li><a href="http://theturtle32.github.com/WebSocket-Node/test-report/servers/">View Server Test Results</a></li>
+<li><a href="http://theturtle32.github.com/WebSocket-Node/test-report/clients/">View Client Test Results</a></li>
+</ul>
+
+<h2>
+<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<p>This library has been used in production on <a href="https://www.worlize.com">worlize.com</a> since April 2011 and seems to be stable.  Your mileage may vary.</p>
+
+<p><strong>Tested with the following node versions:</strong></p>
+
+<ul>
+<li>0.8.28</li>
+<li>0.10.33</li>
+</ul>
+
+<p>It may work in earlier or later versions but I'm not actively testing it outside of the listed versions.  YMMV.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>A few users have reported difficulties building the native extensions without first manually installing node-gyp.  If you have trouble building the native extensions, make sure you've got a C++ compiler, and have done <code>npm install -g node-gyp</code> first. </p>
+
+<p>Native extensions are optional, however, and WebSocket-Node will work even if the extensions cannot be compiled.</p>
+
+<p>In your project root:</p>
+
+<pre><code>$ npm install websocket
+</code></pre>
+
+<p>Then in your code:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> WebSocketServer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).server;
+<span class="pl-k">var</span> WebSocketClient <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).client;
+<span class="pl-k">var</span> WebSocketFrame  <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).<span class="pl-c1">frame</span>;
+<span class="pl-k">var</span> WebSocketRouter <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).router;
+<span class="pl-k">var</span> W3CWebSocket <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).w3cwebsocket;</pre></div>
+
+<h2>
+<a id="note-for-windows-users" class="anchor" href="#note-for-windows-users" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note for Windows Users</h2>
+
+<p>Because there is a small C++ component used for validating UTF-8 data, you will need to install a few other software packages in addition to Node to be able to build this module:</p>
+
+<ul>
+<li><a href="http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express">Microsoft Visual C++</a></li>
+<li>
+<a href="http://www.python.org/download/">Python 2.7</a> (NOT Python 3.x)</li>
+</ul>
+
+<h2>
+<a id="current-features" class="anchor" href="#current-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current Features:</h2>
+
+<ul>
+<li>Licensed under the Apache License, Version 2.0</li>
+<li>Protocol version "8" and "13" (Draft-08 through the final RFC) framing and handshake</li>
+<li>Can handle/aggregate received fragmented messages</li>
+<li>Can fragment outgoing messages</li>
+<li>Router to mount multiple applications to various path and protocol combinations</li>
+<li>TLS supported for outbound connections via WebSocketClient</li>
+<li>TLS supported for server connections (use https.createServer instead of http.createServer)
+
+<ul>
+<li>Thanks to <a href="https://github.com/pors">pors</a> for confirming this!</li>
+</ul>
+</li>
+<li>Cookie setting and parsing</li>
+<li>Tunable settings
+
+<ul>
+<li>Max Receivable Frame Size</li>
+<li>Max Aggregate ReceivedMessage Size</li>
+<li>Whether to fragment outgoing messages</li>
+<li>Fragmentation chunk size for outgoing messages</li>
+<li>Whether to automatically send ping frames for the purposes of keepalive</li>
+<li>Keep-alive ping interval</li>
+<li>Whether or not to automatically assemble received fragments (allows application to handle individual fragments directly)</li>
+<li>How long to wait after sending a close frame for acknowledgment before closing the socket.</li>
+</ul>
+</li>
+<li>
+<a href="http://www.w3.org/TR/websockets/">W3C WebSocket API</a> for applications running on both Node and browsers (via the <code>W3CWebSocket</code> class). </li>
+</ul>
+
+<h2>
+<a id="known-issuesmissing-features" class="anchor" href="#known-issuesmissing-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Known Issues/Missing Features:</h2>
+
+<ul>
+<li>No API for user-provided protocol extensions.</li>
+</ul>
+
+<h1>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage Examples</h1>
+
+<h2>
+<a id="server-example" class="anchor" href="#server-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Server Example</h2>
+
+<p>Here's a short example showing a server that echos back anything sent to it, whether utf-8 or binary.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">#!/usr/bin/env node</span>
+<span class="pl-k">var</span> WebSocketServer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).server;
+<span class="pl-k">var</span> http <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>http<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">var</span> server <span class="pl-k">=</span> http.createServer(<span class="pl-k">function</span>(<span class="pl-smi">request</span>, <span class="pl-smi">response</span>) {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>((<span class="pl-k">new</span> <span class="pl-en">Date</span>()) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> Received request for <span class="pl-pds">'</span></span> <span class="pl-k">+</span> request.url);
+    response.writeHead(<span class="pl-c1">404</span>);
+    response.end();
+});
+server.listen(<span class="pl-c1">8080</span>, <span class="pl-k">function</span>() {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>((<span class="pl-k">new</span> <span class="pl-en">Date</span>()) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> Server is listening on port 8080<span class="pl-pds">'</span></span>);
+});
+
+wsServer <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">WebSocketServer</span>({
+    httpServer<span class="pl-k">:</span> server,
+    <span class="pl-c">// You should not use autoAcceptConnections for production</span>
+    <span class="pl-c">// applications, as it defeats all standard cross-origin protection</span>
+    <span class="pl-c">// facilities built into the protocol and the browser.  You should</span>
+    <span class="pl-c">// *always* verify the connection's origin and decide whether or not</span>
+    <span class="pl-c">// to accept it.</span>
+    autoAcceptConnections<span class="pl-k">:</span> <span class="pl-c1">false</span>
+});
+
+<span class="pl-k">function</span> <span class="pl-en">originIsAllowed</span>(<span class="pl-smi">origin</span>) {
+  <span class="pl-c">// put logic here to detect whether the specified origin is allowed.</span>
+  <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+}
+
+wsServer.on(<span class="pl-s"><span class="pl-pds">'</span>request<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">request</span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">!</span>originIsAllowed(request.origin)) {
+      <span class="pl-c">// Make sure we only accept requests from an allowed origin</span>
+      request.reject();
+      <span class="pl-en">console</span><span class="pl-c1">.log</span>((<span class="pl-k">new</span> <span class="pl-en">Date</span>()) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> Connection from origin <span class="pl-pds">'</span></span> <span class="pl-k">+</span> request.origin <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> rejected.<span class="pl-pds">'</span></span>);
+      <span class="pl-k">return</span>;
+    }
+
+    <span class="pl-k">var</span> connection <span class="pl-k">=</span> request.<span class="pl-c1">accept</span>(<span class="pl-s"><span class="pl-pds">'</span>echo-protocol<span class="pl-pds">'</span></span>, request.origin);
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>((<span class="pl-k">new</span> <span class="pl-en">Date</span>()) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> Connection accepted.<span class="pl-pds">'</span></span>);
+    connection.on(<span class="pl-s"><span class="pl-pds">'</span>message<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">message</span>) {
+        <span class="pl-k">if</span> (message.<span class="pl-c1">type</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">'</span>utf8<span class="pl-pds">'</span></span>) {
+            <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Received Message: <span class="pl-pds">'</span></span> <span class="pl-k">+</span> message.utf8Data);
+            connection.sendUTF(message.utf8Data);
+        }
+        <span class="pl-k">else</span> <span class="pl-k">if</span> (message.<span class="pl-c1">type</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">'</span>binary<span class="pl-pds">'</span></span>) {
+            <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Received Binary Message of <span class="pl-pds">'</span></span> <span class="pl-k">+</span> message.binaryData.<span class="pl-c1">length</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> bytes<span class="pl-pds">'</span></span>);
+            connection.sendBytes(message.binaryData);
+        }
+    });
+    connection.on(<span class="pl-s"><span class="pl-pds">'</span>close<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">reasonCode</span>, <span class="pl-smi">description</span>) {
+        <span class="pl-en">console</span><span class="pl-c1">.log</span>((<span class="pl-k">new</span> <span class="pl-en">Date</span>()) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> Peer <span class="pl-pds">'</span></span> <span class="pl-k">+</span> connection.remoteAddress <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> disconnected.<span class="pl-pds">'</span></span>);
+    });
+});</pre></div>
+
+<h2>
+<a id="client-example" class="anchor" href="#client-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Client Example</h2>
+
+<p>This is a simple example client that will print out any utf-8 messages it receives on the console, and periodically sends a random number.</p>
+
+<p><em>This code demonstrates a client in Node.js, not in the browser</em></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">#!/usr/bin/env node</span>
+<span class="pl-k">var</span> WebSocketClient <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).client;
+
+<span class="pl-k">var</span> client <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">WebSocketClient</span>();
+
+client.on(<span class="pl-s"><span class="pl-pds">'</span>connectFailed<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">error</span>) {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Connect Error: <span class="pl-pds">'</span></span> <span class="pl-k">+</span> error.<span class="pl-c1">toString</span>());
+});
+
+client.on(<span class="pl-s"><span class="pl-pds">'</span>connect<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">connection</span>) {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>WebSocket Client Connected<span class="pl-pds">'</span></span>);
+    connection.on(<span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">error</span>) {
+        <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Connection Error: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> error.<span class="pl-c1">toString</span>());
+    });
+    connection.on(<span class="pl-s"><span class="pl-pds">'</span>close<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() {
+        <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>echo-protocol Connection Closed<span class="pl-pds">'</span></span>);
+    });
+    connection.on(<span class="pl-s"><span class="pl-pds">'</span>message<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">message</span>) {
+        <span class="pl-k">if</span> (message.<span class="pl-c1">type</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">'</span>utf8<span class="pl-pds">'</span></span>) {
+            <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Received: '<span class="pl-pds">"</span></span> <span class="pl-k">+</span> message.utf8Data <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>'<span class="pl-pds">"</span></span>);
+        }
+    });
+
+    <span class="pl-k">function</span> <span class="pl-en">sendNumber</span>() {
+        <span class="pl-k">if</span> (connection.connected) {
+            <span class="pl-k">var</span> number <span class="pl-k">=</span> <span class="pl-c1">Math</span>.<span class="pl-c1">round</span>(<span class="pl-c1">Math</span>.<span class="pl-c1">random</span>() <span class="pl-k">*</span> <span class="pl-c1">0xFFFFFF</span>);
+            connection.sendUTF(number.<span class="pl-c1">toString</span>());
+            <span class="pl-c1">setTimeout</span>(sendNumber, <span class="pl-c1">1000</span>);
+        }
+    }
+    sendNumber();
+});
+
+client.connect(<span class="pl-s"><span class="pl-pds">'</span>ws://localhost:8080/<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>echo-protocol<span class="pl-pds">'</span></span>);</pre></div>
+
+<h2>
+<a id="client-example-using-the-w3c-websocket-api" class="anchor" href="#client-example-using-the-w3c-websocket-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Client Example using the <em>W3C WebSocket API</em>
+</h2>
+
+<p>Same example as above but using the <a href="http://www.w3.org/TR/websockets/">W3C WebSocket API</a>.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> W3CWebSocket <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>websocket<span class="pl-pds">'</span></span>).w3cwebsocket;
+
+<span class="pl-k">var</span> client <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">W3CWebSocket</span>(<span class="pl-s"><span class="pl-pds">'</span>ws://localhost:8080/<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>echo-protocol<span class="pl-pds">'</span></span>);
+
+<span class="pl-c1">client</span>.<span class="pl-en">onerror</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Connection Error<span class="pl-pds">'</span></span>);
+};
+
+<span class="pl-c1">client</span>.<span class="pl-en">onopen</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>WebSocket Client Connected<span class="pl-pds">'</span></span>);
+
+    <span class="pl-k">function</span> <span class="pl-en">sendNumber</span>() {
+        <span class="pl-k">if</span> (client.<span class="pl-c1">readyState</span> <span class="pl-k">===</span> client.OPEN) {
+            <span class="pl-k">var</span> number <span class="pl-k">=</span> <span class="pl-c1">Math</span>.<span class="pl-c1">round</span>(<span class="pl-c1">Math</span>.<span class="pl-c1">random</span>() <span class="pl-k">*</span> <span class="pl-c1">0xFFFFFF</span>);
+            client.<span class="pl-c1">send</span>(number.<span class="pl-c1">toString</span>());
+            <span class="pl-c1">setTimeout</span>(sendNumber, <span class="pl-c1">1000</span>);
+        }
+    }
+    sendNumber();
+};
+
+<span class="pl-c1">client</span>.<span class="pl-en">onclose</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>echo-protocol Client Closed<span class="pl-pds">'</span></span>);
+};
+
+<span class="pl-c1">client</span>.<span class="pl-en">onmessage</span> <span class="pl-k">=</span> <span class="pl-k">function</span>(<span class="pl-smi">e</span>) {
+    <span class="pl-k">if</span> (<span class="pl-k">typeof</span> e.<span class="pl-c1">data</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">'</span>string<span class="pl-pds">'</span></span>) {
+        <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">"</span>Received: '<span class="pl-pds">"</span></span> <span class="pl-k">+</span> e.<span class="pl-c1">data</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>'<span class="pl-pds">"</span></span>);
+    }
+};</pre></div>
+
+<h2>
+<a id="request-router-example" class="anchor" href="#request-router-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Request Router Example</h2>
+
+<p>For an example of using the request router, see <code>libwebsockets-test-server.js</code> in the <code>test</code> folder.</p>
+
+<h2>
+<a id="resources" class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<p>A presentation on the state of the WebSockets protocol that I gave on July 23, 2011 at the LA Hacker News meetup.  <a href="http://www.scribd.com/doc/60898569/WebSockets-The-Real-Time-Web-Delivered">WebSockets: The Real-Time Web, Delivered</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Massivesoft">Massivesoft</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
