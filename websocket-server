@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+ 
+var WebSocketServer = require('websocket').server;
+var http = require('http');
+//var https = require('https');
+var fs = require('fs');
+ 
+var server = http.createServer(
+//{
+//      key: fs.readFileSync( '/etc/ssl/private/server_example_com.key' ),
+//      cert: fs.readFileSync( '/etc/ssl/certs/example_com.crt' )
+//}, 
+function(request, response) {
+    console.log((new Date()) + ' Received request for ' + request.url);
+    response.writeHead(404);
+    response.end();
+});
+server.listen(8888, function() {
+    console.log((new Date()) + ' Server is listening on port 8888');
+});
+ 
+wsServer = new WebSocketServer({
+    httpServer: server,
+    autoAcceptConnections: false
+});
+ 
+function originIsAllowed(origin) {
+  return true;
+}
+ 
+wsServer.on('request', function(request) {
+    if (!originIsAllowed(request.origin)) {
+      request.reject();
+      console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
+      return;
+    }
+ 
+    var connection = request.accept("messages", request.origin);
+    console.log((new Date()) + ' Connection accepted.');
+    connection.on('message', function(message) {
+        if (message.type === 'utf8') {
+            console.log('Received Message: ' + message.utf8Data);
+            connection.sendUTF(JSON.stringify("You sent us: " + message.utf8Data));
+                console.log('Reponse sent: ' + "You sent us: " + message.utf8Data);
+        }
+        else if (message.type === 'binary') {
+            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
+            connection.sendBytes(message.binaryData);
+        }
+    });
+    connection.on('close', function(reasonCode, description) {
+        console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
+    });
+    
+    var connection2 = request.accept("notifications", request.origin);
+    console.log((new Date()) + ' Connection accepted.');
+    connection2.on('message', function(message) {
+        if (message.type === 'utf8') {
+            console.log('Received Message: ' + message.utf8Data);
+            connection2.sendUTF(JSON.stringify("You sent us: " + message.utf8Data));
+            console.log('Reponse sent: ' + "You sent us: " + message.utf8Data);
+        } else if (message.type === 'binary') {
+            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
+            connection2.sendBytes(message.binaryData);
+        }
+    });
+    connection2.on('close', function(reasonCode, description) {
+        console.log((new Date()) + ' Peer ' + connection2.remoteAddress + ' disconnected.');
+    });
+});
