@@ -8,4 +8,10 @@ npm install -g node-gyp
 cd /var/www/
 mkdir -p socket
 cd socket
-npm install https://github.com/Massivesoft/WebSocket-NodeJS/archive/runit.zip
+wget https://github.com/Massivesoft/WebSocket-NodeJS/archive/runit.zip
+unzip runit.zip
+rm runit.zip
+npm install WebSocket-NodeJS-runit
+mv WebSocket-NodeJS-runit/server/websocket-server ./
+mv WebSocket-NodeJS-runit/server/wss /etc/sv/
+ln -s /etc/sv/wss /etc/service/wss
