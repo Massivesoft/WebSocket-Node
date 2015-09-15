@@ -2,7 +2,7 @@
 <meta charset="utf-8" />
 <title>WebSocket Test</title>
 <script language="javascript" type="text/javascript">
-var wsUri = "ws://echo.websocket.org/";
+var wsUri = "ws://<?php echo file_get_contents("http://icanhazip.com"); ?>:8888/messages";
 var output;
 function init() {
   output = document.getElementById("output");
