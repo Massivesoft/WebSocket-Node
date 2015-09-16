@@ -2,14 +2,14 @@
 <meta charset="utf-8" />
 <title>WebSocket Test</title>
 <script language="javascript" type="text/javascript">
-var wsUri = "ws://<?php echo file_get_contents("http://icanhazip.com"); ?>:8888/echo";
+var wsUri = "ws://<?php echo file_get_contents("http://icanhazip.com"); ?>:8888";
 var output;
 function init() {
   output = document.getElementById("output");
   testWebSocket();
 }
 function testWebSocket() {
-  websocket = new WebSocket(wsUri);
+  websocket = new WebSocket(wsUri, "echo");
   websocket.onopen = function(evt) {
     onOpen(evt)
   };
