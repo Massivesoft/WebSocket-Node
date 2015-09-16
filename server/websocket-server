@@ -36,8 +36,21 @@ wsServer.on('request', function(request) {
       return;
     }
  
-    var connection = request.accept("messages", request.origin);
+    var connection = request.accept(["echo","messages","notifications"], request.origin);
     console.log((new Date()) + ' Connection accepted.');
+    
+    connection.on('echo', function(message) {
+        if (message.type === 'utf8') {
+            console.log('Received Message: ' + message.utf8Data);
+            connection.sendUTF(JSON.stringify("You sent us: " + message.utf8Data));
+                console.log('Reponse sent: ' + "You sent us: " + message.utf8Data);
+        }
+        else if (message.type === 'binary') {
+            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
+            connection.sendBytes(message.binaryData);
+        }
+    });
+    
     connection.on('message', function(message) {
         if (message.type === 'utf8') {
             console.log('Received Message: ' + message.utf8Data);
@@ -51,21 +64,5 @@ wsServer.on('request', function(request) {
     });
     connection.on('close', function(reasonCode, description) {
         console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
-    });
-    
-    var connection2 = request.accept("notifications", request.origin);
-    console.log((new Date()) + ' Connection accepted.');
-    connection2.on('message', function(message) {
-        if (message.type === 'utf8') {
-            console.log('Received Message: ' + message.utf8Data);
-            connection2.sendUTF(JSON.stringify("You sent us: " + message.utf8Data));
-            console.log('Reponse sent: ' + "You sent us: " + message.utf8Data);
-        } else if (message.type === 'binary') {
-            console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
-            connection2.sendBytes(message.binaryData);
-        }
-    });
-    connection2.on('close', function(reasonCode, description) {
-        console.log((new Date()) + ' Peer ' + connection2.remoteAddress + ' disconnected.');
     });
 });
