@@ -2,7 +2,7 @@
 
 # debian based os's only
 
-apt-get -y install runit nodejs #build-essential
+apt-get -y install runit nodejs npm #build-essential
 npm install -g node-gyp
 cd /var/www/
 mkdir -p socket
