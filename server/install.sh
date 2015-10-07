@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # debian based os's only
+# will use /var/www/socket and /etc/service/wss
 
 apt-get -y install runit nodejs npm #build-essential
 npm install -g node-gyp
