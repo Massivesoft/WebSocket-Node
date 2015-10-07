@@ -1,6 +1,6 @@
 #!/bin/bash
-DIR="/var/www/socket/";
-BIN="websocket-server";
-ARGS="--nouse-idle-notification";
- 
-exec "${DIR}${BIN}" "${ARGS}"
+DIR="/usr/bin";
+BIN="nodejs";
+ARGS="/var/www/socket/websocket-server";
+
+exec "${DIR}/${BIN}" "${ARGS}"
