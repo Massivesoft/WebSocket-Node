@@ -4,7 +4,7 @@
 var WebSocketServer = require('websocket').server;
 var http = require('http');
 //var https = require('https');
-var fs = require('fs');
+//var fs = require('fs');
  
 var server = http.createServer(
 //{
@@ -16,6 +16,7 @@ function(request, response) {
     response.writeHead(404);
     response.end();
 });
+
 server.listen(8888, function() {
     console.log((new Date()) + ' Server is listening on port 8888');
 });
