@@ -2,7 +2,18 @@
 <meta charset="utf-8" />
 <title>WebSocket Test</title>
 <script language="javascript" type="text/javascript">
-var wsUri = "ws://<?php echo file_get_contents("http://icanhazip.com"); ?>:8888";
+<?php
+$ip = preg_replace("/[^a-f0-9\.:]/i", "", file_get_contents("http://icanhazip.com"));
+if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+        // do nothing
+} else if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        $ip = "[$ip]";
+} else {
+        $ip = "{$_SERVER['SERVER_ADDR']}";
+}
+// be careful when using an IP with SSL certificates
+?>
+var wsUri = "ws<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 's' : ''; ?>://<?php echo $ip; ?>:8888";
 var output;
 function init() {
   output = document.getElementById("output");
